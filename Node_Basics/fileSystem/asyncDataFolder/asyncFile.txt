@@ -1,0 +1,2 @@
+Hello, this is an async sample text file.
+This is an async appended line.
