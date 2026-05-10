@@ -36,28 +36,21 @@ fs.writeFile(
   asyncFilepath,
   "Hello, this is an async sample text file.",
   (err) => {
-    if (err) {
-      console.error("ASYNC: Error creating file", err);
-    } else {
-      console.log("ASYNC: File created successfully");
-      fs.readFile(asyncFilepath, "utf8", (err, data) => {
-        if (err) {
-          console.log("ASYNC: Error reading file", err);
-        } else {
-          console.log("ASYNC: File read successfully", data);
-          fs.appendFile(
-            asyncFilepath,
-            "\nThis is an async appended line.",
-            (err) => {
-              if (err) {
-                console.error("ASYNC: Error appending file", err);
-              } else {
-                console.log("ASYNC: File appended successfully");
-              }
-            },
-          );
-        }
-      });
-    }
+    if (err) console.error("ASYNC: Error creating file", err);
+
+    console.log("ASYNC: File created successfully");
+    fs.readFile(asyncFilepath, "utf8", (err, data) => {
+      if (err) console.log("ASYNC: Error reading file", err);
+
+      console.log("ASYNC: File read successfully", data);
+      fs.appendFile(
+        asyncFilepath,
+        "\nThis is an async appended line.",
+        (err) => {
+          if (err) console.error("ASYNC: Error appending file", err);
+          console.log("ASYNC: File appended successfully");
+        },
+      );
+    });
   },
 );
